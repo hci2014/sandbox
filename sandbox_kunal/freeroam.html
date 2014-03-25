@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="../assets/ico/favicon.ico">
 
-<title>P2P Demo Mode - Challenge</title>
+<title>P2P Demo Mode - Free Roam</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../p2p_app/css/bootstrap.min.css" rel="stylesheet">
@@ -34,11 +34,6 @@ body {
 	var map; // for the google map object
 
 	var mapMarker; // the google map marker object
-	var destMarker1; // the google map destination marker object
-	var destMarker2; // the google map destination marker object
-	var destMarker3; // the google map destination marker object
-	var destMarker4; // the google map destination marker object
-	var destselected = false; // destination selected flag
 	var totalDistance = 0.0;
 	var lastLat;
 	var lastLong;
@@ -50,26 +45,13 @@ body {
 
 	cbChanged = function(checkboxElem) {
 		if (!checkboxElem.checked) {
-			if(destselected == true) 
 				startWatching();
-			else
-				document.getElementById('myonoffswitch').checked = true ;
 		} else {
 			stopWatching();
-			$('#challengesummary').modal('show');
+			$('#freeroamsummary').modal('show');
 		}
 	}
 	
-	showMarkers = function(){
-		document.getElementById("resetButton").style.visibility = "hidden";
-		destMarker1.setMap(map);
-		destMarker2.setMap(map);
-	    destMarker3.setMap(map);
-	    destMarker4.setMap(map);
-		map.setCenter(mapMarker.getPosition());
-        map.setZoom(12);
-	    destselected = false;
-	}
 
 	Number.prototype.toRadians = function() {
 		return this * Math.PI / 180;
@@ -129,10 +111,6 @@ body {
 		var lat = position.coords.latitude;
 		var lon = position.coords.longitude;
 		var latlng = new google.maps.LatLng(lat, lon);
-		var latlng1 = new google.maps.LatLng(lat + 0.01, lon + 0.01);
-		var latlng2 = new google.maps.LatLng(lat - 0.02, lon - 0.012);
-		var latlng3 = new google.maps.LatLng(lat + 0.006, lon - 0.02);
-		var latlng4 = new google.maps.LatLng(lat - 0.004, lon + 0.018);
 
 		lastLat = lat;
 		lastLong = lon;
@@ -157,67 +135,6 @@ body {
 			title : "You are here."
 		});
 
-		destMarker1 = new google.maps.Marker({
-			position : latlng1,
-			map : map,
-			title : "dest1"
-		});
-		destMarker2 = new google.maps.Marker({
-			position : latlng2,
-			map : map,
-			title : "dest2"
-		});
-		destMarker3 = new google.maps.Marker({
-			position : latlng3,
-			map : map,
-			title : "dest3"
-		});
-		destMarker4 = new google.maps.Marker({
-			position : latlng4,
-			map : map,
-			title : "dest4"
-		});
-		
-		google.maps.event.addListener(destMarker1, 'click', function() {
-			if(watchID == null){
-				document.getElementById("resetButton").style.visibility = "visible";	
-			}
-		    destMarker2.setMap(null);
-		    destMarker3.setMap(null);
-		    destMarker4.setMap(null);
-		    destselected = true;
-		    
-		});
-		
-		google.maps.event.addListener(destMarker2, 'click', function() {
-			if(watchID == null){
-				document.getElementById("resetButton").style.visibility = "visible";	
-			}
-			destMarker1.setMap(null);
-		    destMarker3.setMap(null);
-		    destMarker4.setMap(null);
-		    destselected = true;
-		});
-		
-		google.maps.event.addListener(destMarker3, 'click', function() {
-			if(watchID == null){
-				document.getElementById("resetButton").style.visibility = "visible";	
-			}
-			destMarker1.setMap(null);
-		    destMarker2.setMap(null);
-		    destMarker4.setMap(null);
-		    destselected = true;
-		});
-
-		google.maps.event.addListener(destMarker4, 'click', function() {
-			if(watchID == null){
-				document.getElementById("resetButton").style.visibility = "visible";	
-			}
-			destMarker1.setMap(null);
-		    destMarker2.setMap(null);
-		    destMarker3.setMap(null);
-		    destselected = true;
-		});
 		updateLocation(position);
 
 	}
@@ -253,8 +170,7 @@ body {
 	}
 
 	function stopWatching() {
-		
-		document.getElementById("resetButton").style.visibility = "visible";
+	
 		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) + " km";
 		
 		if (watchID != null){
@@ -264,7 +180,7 @@ body {
 	}
 
 	function startWatching() {
-		document.getElementById("resetButton").style.visibility = "hidden";
+
 		watchID = navigator.geolocation.watchPosition(show_map, geo_error, {
 			enableHighAccuracy : HIGHACCURACY,
 			timeout : TIMEOUT,
@@ -276,7 +192,7 @@ body {
 		navigator.geolocation.getCurrentPosition(initialize, geo_error);
 	}
 	
-	google.maps.event.addDomListener(window, 'load', initialize);
+
 
 </script>
 
@@ -341,9 +257,9 @@ body {
 		<div class="starter-template">
 			<div class="alert alert-dismissable alert-danger">
 				<button type="button" class="close" data-dismiss="alert">×</button>
-				<strong>ALERT!</strong> Select a destination on the map and Click on the START switch to begin Challenge
+				<strong>ALERT!</strong> Click on the START switch to begin Challenge
 			</div>
-			<h1>Challenge Mode</h1>
+			<h1>Free Roam Mode</h1>
 			<div class="onoffswitch">
 				<input type="checkbox" name="onoffswitch"
 					class="onoffswitch-checkbox" id="myonoffswitch"
@@ -404,7 +320,7 @@ body {
 
 
 
-	<div class="modal fade" id="challengesummary" tabindex="-1" role="dialog"
+	<div class="modal fade" id="freeroamsummary" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">

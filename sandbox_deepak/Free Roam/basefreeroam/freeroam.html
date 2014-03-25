@@ -45,7 +45,7 @@
         
    cbChanged = function(checkboxElem) {
   if (!checkboxElem.checked) {
-    startfunction();
+    startwatching();
   } else {
     stopWatching();
     $('#freeRoam').modal('show');
@@ -92,8 +92,7 @@
 
     document.getElementById("latitude").innerHTML = latitude;
     document.getElementById("longitude").innerHTML = longitude;
-    document.getElementById("accuracy").innerHTML = accuracy;
-    document.getElementById("timestamp").innerHTML = timestamp;
+
 
     // sanity test... don't calculate distance if accuracy
     // value too large
@@ -103,34 +102,52 @@
     }
 
     // calculate distance
-
-    if ((lastLat != null) && (lastLong != null)) {
-      var currentDistance = distance(latitude, longitude, lastLat, lastLong);
-      document.getElementById("currDist").innerHTML =
-        "Current distance traveled: " + currentDistance.toFixed(4) + " km";
-
-      totalDistance += currentDistance;
-
-      document.getElementById("totalDist").innerHTML =
-        totalDistance.toFixed(4) + " km";
-    }
+	totalDistance += currentDistance;
+	document.getElementById("totalDist").innerHTML = totalDistance.toFixed(4) + " km";
 
 
     lastLat = latitude;
     lastLong = longitude;
 
-    updateStatus("Location successfully updated.");
+    //updateStatus("Location successfully updated.");
   }
+  
+  
+  
+  function initialize(position) {
+
+		var lat = position.coords.latitude;
+		var lon = position.coords.longitude;
+		var latlng = new google.maps.LatLng(lat, lon);
+
+		lastLat = lat;
+		lastLong = lon;
+
+		var myOptions = {
+			zoom : 12,
+			center : latlng,
+
+			// mapTypeID --
+			// ROADMAP displays the default road map view
+			// SATELLITE displays Google Earth satellite images
+			// HYBRID displays a mixture of normal and satellite views
+			// TERRAIN displays a physical map based on terrain information.
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
+
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+		mapMarker = new google.maps.Marker({
+			position : latlng,
+			map : map,
+			title : "You are here."
+		});
+
+		updateLocation(position);
+
+	}
         
 
-        function getGeoLocation() {
-            try {
-                if( !! navigator.geolocation ) return navigator.geolocation;
-                else return undefined;
-            } catch(e) {
-                return undefined;
-            }
-        }
 
         function show_map(position) {
         
@@ -138,31 +155,10 @@
             var lon = position.coords.longitude;
             var latlng = new google.maps.LatLng(lat, lon);
 
-            if(map) {
-          
-                map.panTo(latlng);
-                mapMarker.setPosition(latlng);
-            } else {
-                var myOptions = {
-                    zoom: 18,
-                    center: latlng,
-
-                    // mapTypeID --
-                    // ROADMAP displays the default road map view
-                    // SATELLITE displays Google Earth satellite images
-                    // HYBRID displays a mixture of normal and satellite views
-                    // TERRAIN displays a physical map based on terrain information.
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
             
+		mapMarker.setPosition(latlng);
 
-                mapMarker = new google.maps.Marker({
-                    position: latlng,
-                    title:"You are here."
-                });
-                mapMarker.setMap(map);
-                updateLocation(position);
+		updateLocation(position);
             }
         }
 
@@ -186,25 +182,24 @@
         }
 
         function stopWatching() {
-            if(watchID) geo.clearWatch(watchID);
+            if(watchID){
+			navigator.geolocation.clearWatch(watchID);
             watchID = null;
+			}
         }
 
         function startWatching() {
-            watchID = geo.watchPosition(show_map, geo_error, {
+            watchID = navigator.geolocation.watchPosition(show_map, geo_error, {
                 enableHighAccuracy: HIGHACCURACY,
                 maximumAge: MAXIMUM_AGE,
                 timeout: TIMEOUT
             });
         }
+		
+		window.onload = function() {
+		navigator.geolocation.getCurrentPosition(initialize, geo_error);
+	}
 
-        function startfunction() {
-            if((geo = getGeoLocation())) {
-                startWatching();
-            } else {
-                alert('Geolocation not supported.')
-            }
-        }
         
 
 
