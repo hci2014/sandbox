@@ -34,6 +34,7 @@ body {
 	var map; // for the google map object
 
 	var mapMarker; // the google map marker object
+	var startMarker;
 	var totalDistance = 0.0;
 	var lastLat;
 	var lastLong;
@@ -100,6 +101,22 @@ body {
 		totalDistance += currentDistance;
 		document.getElementById("totalDist").innerHTML = totalDistance.toFixed(4) + " km";
 
+		var PathCoordinates = [
+		new google.maps.LatLng(startMarker.getPosition().coords.latitude,startMarker.getPosition().coords.longitude),
+		new google.maps.LatLng(latitude,longitude)
+		];
+		
+		var path = new google.maps.Polyline({
+			path: PathCoordinates,
+			geodesic: true,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+		 });
+		  
+		path.setMap(map);
+
+		
 		lastLat = latitude;
 		lastLong = longitude;
 		//updateStatus("Location successfully updated.");
@@ -180,7 +197,15 @@ body {
 	}
 
 	function startWatching() {
-
+		
+		var pos = new google.maps.LatLng(lastLat, lastLong);
+		startMarker = new google.maps.Marker({
+			position : pos,
+			map : map,
+			title : "START"
+		});
+		
+		
 		watchID = navigator.geolocation.watchPosition(show_map, geo_error, {
 			enableHighAccuracy : HIGHACCURACY,
 			timeout : TIMEOUT,
