@@ -12,8 +12,8 @@
     <title>P2P Demo Mode</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../p2p_app/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../p2p_app/css/flipswitch.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flipswitch.css" rel="stylesheet">
     <style>
  
  body {
@@ -111,8 +111,8 @@
 
       totalDistance += currentDistance;
 
-      document.getElementById("totalDist").innerHTML = totalDistance.toFixed(4);
-        
+      document.getElementById("totalDist").innerHTML =
+        totalDistance.toFixed(4) + " km";
     }
 
 
@@ -260,7 +260,7 @@
   
 <span class="pull-left"> Latitude: <span class="muted" id="latitude"></span> </span><br/>
 <span class="pull-left"> Longitude: <span class="muted" id="longitude"></span> </span><br/>
-<span class="pull-left"> Total Distance: <span class="muted" id="totalDist"></span>0.00 </span><br/>
+<span class="pull-left"> Total Distance: <span class="muted" id="totalDist"></span> </span><br/>
  <div id="map_canvas" style="height: 300px;"></div>
   </div>
 </div>
@@ -273,7 +273,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../p2p_app/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
       
     <!-- Modals
     ================================================== -->
