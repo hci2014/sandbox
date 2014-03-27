@@ -129,6 +129,10 @@ body {
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script>
+
+        $('.btn').button();
+    </script>
 <script>
 function call() {
 if (navigator.geolocation)
@@ -179,32 +183,30 @@ document.getElementById("time").innerHTML = time;
                         <h4 class="modal-title" id="myModalLabel">How would you travel?</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="radio">
-                            <label>
-                                <input type="radio"> Walking
-                            </label>
-                         </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio"> Running
-                            </label>
-                            </div>
-                            <div class="radio">
-                            <label>
-                                <input type="radio"> Cycling
-                            </label>
-                            </div>
-                                <div class="radio">
-                            <label>
-                                <input type="radio"> Public Transport
-                            </label>
-                                </div>
-                                    <div class="radio">
-                            <label>
-                                <input type="radio"> Car
-                            </label>
 
+                        <div class="btn-group" data-toggle="buttons">
+                            <div class="alert alert-dismissable alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>ALERT!</strong> Please Select at least one option
+                            </div>
+
+                            <label class="btn btn-primary">
+                                <input type="radio" name="inputWalls" id="inputWalls" value="Excellent" checked>
+                                Walking </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="inputWalls" id="inputWalls" value="Good">
+                                Running </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+                                Cycling </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+                                Public Transport </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+                                Car </label>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <a href="freeroam.html" class="btn btn-primary">OK</a>
@@ -226,32 +228,30 @@ document.getElementById("time").innerHTML = time;
                     <h4 class="modal-title" id="myModalLabel1">How would you travel?</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Walking
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Running
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Cycling
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Public Transport
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio"> Car
-                        </label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <div class="alert alert-dismissable alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>ALERT!</strong> Please Select at least one option
+                        </div>
 
+                        <label class="btn btn-primary">
+                            <input type="radio" name="inputWalls" id="inputWalls" value="Excellent" checked>
+                            Walking </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="inputWalls" id="inputWalls" value="Good">
+                            Running </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+                            Cycling </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+                            Public Transport </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+                            Car </label>
                     </div>
+
+                   
                 </div>
                 <div class="modal-footer">
                     <a href="challenge.html" class="btn btn-primary">OK</a>
