@@ -12,8 +12,8 @@
 <title>P2P Demo Mode - Challenge</title>
 
 <!-- Bootstrap core CSS -->
-<link href="../p2p_app/css/bootstrap.min.css" rel="stylesheet">
-<link href="../p2p_app/css/flipswitch.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/flipswitch.css" rel="stylesheet">
 
 <style>
 body {
@@ -300,12 +300,12 @@ body {
 					<li class="active"><a href="#"> <span
 							class="glyphicon glyphicon-home"></span> Home
 					</a></li>
-					<li><a href="#profile"><span
-							class="glyphicon glyphicon-user"></span> My Profile</a></li>
+					<!--<li><a href="#profile"><span-->
+							<!--class="glyphicon glyphicon-user"></span> My Profile</a></li>-->
 					<li><a href="#reports"><span
 							class="glyphicon glyphicon-dashboard"></span> My Reports</a></li>
-					<li><a href="#runs"><span
-							class="glyphicon glyphicon-heart"></span> My Runs</a></li>
+					<!--<li><a href="#runs"><span-->
+							<!--class="glyphicon glyphicon-heart"></span> My Runs</a></li>-->
 					<li><a href="#logout"><span
 							class="glyphicon glyphicon-off"></span> Logout</a></li>
 
@@ -320,7 +320,7 @@ body {
         <div class="navbar-header">
           
         </div class="toppad">
-			<img src="Profile_Pic.png" width="50" height="50" alt="Hello"></img>
+			<img src="assets/Profile_Pic.png" width="50" height="50" alt="Hello"></img>
 			<strong>John Doe</strong>
 			<strong class="pull-right">1260 Points</strong>
 		<div>
@@ -363,7 +363,7 @@ body {
 				</span><br /><span class="pull-left"> Total Distance: <span
 					class="muted" id="totalDist"></span>
 				</span>
-				<input onclick="showMarkers();" style="visibility:hidden" type="button" value="SwitchDest" id="resetButton">
+				<input onclick="showMarkers();" style="visibility:hidden" type="button" class="btn btn-primary" value="Switch Destination" id="resetButton">
 				<br />
 				<div id="map_canvas" style="height: 300px;"></div>
 			</div>
@@ -379,7 +379,7 @@ body {
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="../p2p_app/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 	<!-- Modals
     ================================================== -->
