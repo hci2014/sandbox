@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="273d9b15-d03d-477e-bfef-927d7da72542" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Med_fidelity/challenge.html" afterPath="$PROJECT_DIR$/Med_fidelity/challenge.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Med_fidelity/freeroam.html" afterPath="$PROJECT_DIR$/Med_fidelity/freeroam.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Med_fidelity/landing.html" afterPath="$PROJECT_DIR$/Med_fidelity/landing.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Med_fidelity/reports.html" afterPath="$PROJECT_DIR$/Med_fidelity/reports.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Med_fidelity/login.html" afterPath="$PROJECT_DIR$/Med_fidelity/login.html" />
     </list>
     <ignored path="sandbox.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="login.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Med_fidelity/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="25.0" vertical-offset="1005" max-vertical-offset="2475">
+            <state line="37" column="12" selection-start="732" selection-end="732" vertical-scroll-proportion="0.80668604" vertical-offset="0" max-vertical-offset="2475">
               <folding />
             </state>
           </provider>
@@ -50,8 +47,10 @@
       <file leaf-file-name="landing.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Med_fidelity/landing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="52" selection-start="1394" selection-end="1394" vertical-scroll-proportion="-12.5" vertical-offset="375" max-vertical-offset="2655">
-              <folding />
+            <state line="95" column="0" selection-start="3234" selection-end="3234" vertical-scroll-proportion="-28.5" vertical-offset="0" max-vertical-offset="2670">
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="summary.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="summary.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Med_fidelity/summary.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="34" selection-start="4596" selection-end="4596" vertical-scroll-proportion="3.0902255" vertical-offset="0" max-vertical-offset="2655">
+            <state line="137" column="34" selection-start="4596" selection-end="4596" vertical-scroll-proportion="-85.625" vertical-offset="0" max-vertical-offset="2655">
               <folding />
             </state>
           </provider>
@@ -100,12 +99,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Med_fidelity/login.html" />
         <option value="$PROJECT_DIR$/Med_fidelity/reports.html" />
-        <option value="$PROJECT_DIR$/Med_fidelity/landing.html" />
         <option value="$PROJECT_DIR$/Med_fidelity/freeroam.html" />
         <option value="$PROJECT_DIR$/Med_fidelity/challenge.html" />
         <option value="$PROJECT_DIR$/Med_fidelity/summary.html" />
+        <option value="$PROJECT_DIR$/Med_fidelity/login.html" />
+        <option value="$PROJECT_DIR$/Med_fidelity/landing.html" />
       </list>
     </option>
   </component>
@@ -249,14 +248,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36653388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -273,15 +272,15 @@
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36653388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -361,17 +360,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Med_fidelity/landing.html">
+    <entry file="file://$PROJECT_DIR$/Med_fidelity/challenge.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="52" selection-start="1394" selection-end="1394" vertical-scroll-proportion="-12.5" vertical-offset="375" max-vertical-offset="2655">
+        <state line="421" column="16" selection-start="12460" selection-end="12513" vertical-scroll-proportion="-17.416666" vertical-offset="5897" max-vertical-offset="6585">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Med_fidelity/login.html">
+    <entry file="file://$PROJECT_DIR$/Med_fidelity/summary.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="25.0" vertical-offset="1005" max-vertical-offset="2475">
+        <state line="137" column="34" selection-start="4596" selection-end="4596" vertical-scroll-proportion="-85.625" vertical-offset="0" max-vertical-offset="2655">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Med_fidelity/landing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="0" selection-start="3234" selection-end="3234" vertical-scroll-proportion="-28.5" vertical-offset="0" max-vertical-offset="2670">
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -382,16 +390,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Med_fidelity/challenge.html">
+    <entry file="file://$PROJECT_DIR$/Med_fidelity/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="421" column="16" selection-start="12460" selection-end="12513" vertical-scroll-proportion="-17.416666" vertical-offset="5897" max-vertical-offset="6585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Med_fidelity/summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="34" selection-start="4596" selection-end="4596" vertical-scroll-proportion="3.0902255" vertical-offset="0" max-vertical-offset="2655">
+        <state line="37" column="12" selection-start="732" selection-end="732" vertical-scroll-proportion="0.80668604" vertical-offset="0" max-vertical-offset="2475">
           <folding />
         </state>
       </provider>
