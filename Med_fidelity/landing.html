@@ -99,7 +99,7 @@ body {
 				</h3>
 
 				<p style="text-align: center">
-					<a class="btn btn-primary btn-sm" style="border-radius: 30px" href="freeroam.html"><span class="glyphicon glyphicon-globe"></span> Free Roam Mode</a>
+					<a class="btn btn-primary btn-sm" style="border-radius: 30px"  data-toggle="modal" data-target="#transport_free_roam"><span class="glyphicon glyphicon-globe"></span> Free Roam Mode</a>
 				</p>
 
 		</div>
@@ -110,7 +110,7 @@ body {
 				</h3>
 
 				<p style="text-align: center">
-					<a class="btn btn-primary btn-sm" style="border-radius: 30px" href="challenge.html"><span class="glyphicon glyphicon-flag"></span> Challenge Mode</a>
+					<a class="btn btn-primary btn-sm" style="border-radius: 30px" data-toggle="modal" data-target="#transport_challenge" ><span class="glyphicon glyphicon-flag"></span> Challenge Mode</a>
 				</p>
 
 		</div>
@@ -119,7 +119,7 @@ body {
 
     </div><!-- /.container -->
 
-
+</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -167,6 +167,98 @@ document.getElementById("time").innerHTML = time;
 </script>
 
 
-</script>
+
+        <div class="modal fade" id="transport_free_roam" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">How would you travel?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Walking
+                            </label>
+                         </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Running
+                            </label>
+                            </div>
+                            <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Cycling
+                            </label>
+                            </div>
+                                <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Public Transport
+                            </label>
+                                </div>
+                                    <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Car
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="freeroam.html" class="btn btn-primary">OK</a>
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <div class="modal fade" id="transport_challenge" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">How would you travel?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Walking
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Running
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Cycling
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Public Transport
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Car
+                        </label>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="challenge.html" class="btn btn-primary">OK</a>
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
   </body>
 </html>
