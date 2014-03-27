@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="shortcut icon" href="../assets/ico/favicon.ico">
+	
+    <title>P2P Demo Mode</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flipswitch.css" rel="stylesheet">
+    <style>
+ 
+ body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+ </style>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">P2P Physical Activity Tracker</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"> <span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <!--<li><a href="#profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>-->
+            <li><a href="reports.html"><span class="glyphicon glyphicon-dashboard"></span> My Reports</a></li>
+            <!--<li><a href="#runs"><span class="glyphicon glyphicon-heart"></span> My Runs</a></li>-->
+            <li> <a href="#logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li> 
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	<div class="navbar navbar-inverse points" style="background-color:#ffffff" role="displayInfo">
+      <div class="container">
+        <div class="navbar-header">
+          
+        </div class="toppad">
+			<img src="assets/Profile_Pic.png" width="50" height="50" alt="Hello"></img>
+			<strong>John Doe</strong>
+			<strong class="pull-right">1260 Points</strong>
+		<div>
+			<center><strong>Level 5</strong></center>
+			<!-- <center><img src="Progress_Bar.jpg" width="150" height="50" alt="Progress"></img></center> -->
+			<div class="progress progress-striped active" width="100">
+			<div class="progress-bar" width="100" style="width: 75%"></div>
+			</div>
+		</div>
+		
+			
+		
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	<div class="container">
+	
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<div class="jumbotron">
+				<h2>
+					Good run!
+				</h2>
+				<p>
+					Points Gained : 40 <br>
+					Distance covered : 1 mile <br>
+					Current Level : Level 5 <br>
+					Personal Best : 70
+				</p>
+			</div>
+		</div>
+		
+		<div class="col-md-4 column">
+			<div class="panel-group" id="panel-730734">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-730734" href="#panel-element-659170">View Suggestions</a>
+					</div>
+					<div id="panel-element-659170" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<p>
+								<ul>
+									<li>World Health Organization recommends 150 minutes of moderate physical activity for adults aged 18-64.</li><br>
+									<li>Zumba at the Charles River Esplanade on Saturday, March 29th, 2014 at 6:00 pm.</li>
+								</ul>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="row clearfix">
+		<div class="col-xs-4 column">
+			 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#saveModal">Save</button>
+		</div>
+		<div class="col-xs-4 column">
+			 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteModal">Discard</button>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  </div>
+			  <div class="modal-body">
+				Your results have been saved successfully!
+			  </div>
+			  <div class="modal-footer">
+                  <a href="landing.html" class="btn btn-primary">OK</a>
+			  </div>
+			</div>
+		 </div>
+	</div>
+	
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				
+			  </div>
+			  <div class="modal-body">
+				Are you sure you want to delete?
+			  </div>
+			  <div class="modal-footer">
+                  <a href="landing.html" class="btn btn-primary">Yes</a>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		 </div>
+	</div>
+	
+</div>
+	
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	
+</body>
+</html>
