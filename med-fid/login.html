@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="login">
+    <meta name="author" content="team_p2p">
+
+
+    <title>Welcome to P2P</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+body {
+  padding-top: 50px;
+}
+
+.carousel {
+  height: 500px;
+  margin-bottom: 0px;
+}
+.carousel-caption {
+  z-index: 10;
+}
+
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+
+</style>
+
+  </head>
+
+  <body>
+
+ <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">P2P Physical Activity Tracker</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"> <span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a data-toggle="modal" data-target="#aboutmodal" ><span class="glyphicon glyphicon-star"></span> About</a></li>
+
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+
+
+    <div class="container">
+
+        <!-- Carousel
+    ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="assets/bike.jpg" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="well-sm" style="color:white">Welcome to P2P </h1>
+                            <p>Your personal physical activity tracker</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="assets/park.jpg" alt="Second slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="well-sm" style="color:white" >Get Fit, without hitting the gym </h1>
+                            <p>Map your runs, Track your levels of physical activity, share with friends, get motivated, get fit!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="assets/lake.jpg" alt="Third slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="well-sm" style="color:white">Get Started.</h1>
+                            <p><a class="btn btn-lg btn-success" href="#" role="button" data-toggle="modal" data-target="#loginmodal">Login <span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div><!-- /.carousel -->
+    </div><!-- /.container -->
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+
+   <!-- Modals
+    ================================================== -->
+<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">P2P Login</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" role="form" action="landing.html">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" id="myModalLabel1">About</h4>
+             </div>
+             <div class="modal-body">
+                 <h2>Hello.</h2>
+                 <p>This Medium fidelity prototype was developed as a part of CS5340 under the guidance of Professor Andrea Parker </p>
+                 <p>Team Members: Chandana, Kunal, Varun, Deepak </p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+  </body>
+</html>

@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <meta name="author" content="">
+
+    <title>P2P Demo Mode</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flipswitch.css" rel="stylesheet">
+    <style>
+ 
+ body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.divider {
+	padding: 40px 15px;
+	width: 10px;
+	height: auto;
+	display: inline-block;
+}
+
+.toppad {
+	padding-top: 0px;
+}
+
+ </style>
+     
+	<script src="js/Chart.js"></script>
+    <script type="text/javascript">
+        
+		function drBtnChanged(){
+			<!-- alert('Daily reports'); -->
+			var data = {
+			labels : ["10:00","11:00","12:00","13:00","14:00","15:00","16:00"],
+			<!-- labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], -->
+			datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : [65,59,90,81,56,55,40]
+			},
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				pointColor : "rgba(151,187,205,1)",
+				pointStrokeColor : "#fff",
+				data : [28,48,40,19,96,27,100]
+			}
+			]
+		};
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var dChart = document.getElementById("graph_canvas").getContext("2d");
+			var dailyChart = new Chart(dChart).Line(data,options);
+
+		}
+
+		function wkBtnChanged(){
+
+			var data = {
+			labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+			datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				data : [65,59,90,81,56,55,40]
+			},
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				data : [28,48,40,19,96,27,100]
+			}
+		]
+		};
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var wChart = document.getElementById("graph_canvas").getContext("2d");
+			var weeklyChart = new Chart(wChart).Bar(data,options);
+		}
+
+	
+		function mtBtnChanged(){
+		
+			var data = [
+				{
+					value: 30,
+					color:"#F7464A"
+				},
+				{
+					value : 50,
+					color : "#E2EAE9"
+				},
+				{
+					value : 100,
+					color : "#D4CCC5"
+				},
+				{
+					value : 40,
+					color : "#949FB1"
+				},
+				{
+					value : 120,
+					color : "#4D5360"
+				}
+
+			];
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var mChart = document.getElementById("graph_canvas").getContext("2d");
+			var monthlyChart = new Chart(mChart).Doughnut(data,options);
+		}
+		
+		/*function genCustReport(){
+			<!--var custRepTyp = $(this).text();-->
+			<!-- var custRepTyp = $(this).parents(".repDropdown").find('.selection').text($(this).text()); -->
+			<!--alert(custRepTyp);-->
+			
+			$(".dropdown-menu li a").click(function () {
+			var custRepType = $(this).text();
+			<!-- var custRepType = $(this).parents(".repDropdown").find('.selection').text($(this).text()); -->
+			alert(custRepType);
+			});
+		}
+		
+		function cstBtnChanged() {
+			$('#customReport').modal('show');
+		} */
+		
+		
+		
+    </script>
+ 
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">P2P Physical Activity Tracker</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="landing.html"> <span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <!--<li><a href="#profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>-->
+            <li><a href="reports.html"><span class="glyphicon glyphicon-dashboard"></span> My Reports</a></li>
+            <!--<li><a href="#runs"><span class="glyphicon glyphicon-heart"></span> My Runs</a></li>-->
+            <li> <a href="login.html"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	 <div class="navbar navbar-inverse points" style="background-color:#ffffff" role="displayInfo">
+      <div class="container">
+        <div class="navbar-header">
+          
+        </div class="toppad">
+			<img src="assets/Profile_Pic.png" width="50" height="50" alt="Hello"></img>
+			<strong>John Doe</strong>
+			<strong class="pull-right">1260 Points</strong>
+		<div>
+			<center><strong>Level 5</strong></center>
+			<!-- <center><img src="Progress_Bar.jpg" width="150" height="50" alt="Progress"></img></center> -->
+			<div class="progress progress-striped active" width="100">
+			<div class="progress-bar" width="100" style="width: 75%"></div>
+			</div>
+		</div>
+		
+			
+		
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div class="starter-template">
+	<h2><strong>Reports</strong></h2> 
+
+			<button type="button" class="btn btn-primary btn-xs" data-toggle="button" id="dlyRepButton" onClick="drBtnChanged(this);">Daily Reports</button>
+			<script type="text/javascript">
+
+			</script>
+			
+			<!-- <div class="divider"> -->
+			
+			<button type="button" class="btn btn-primary btn-xs" data-toggle="button" id="wklyRepButton" onClick="wkBtnChanged(this);">Weekly Reports</button>
+			<script type="text/javascript">
+
+			</script>
+	</div>
+
+	<div class="starter-template">
+			<button type="button" class="btn btn-primary btn-xs" data-toggle="button" id="montRepButton" onClick="mtBtnChanged(this);">Monthly Reports</button>
+			<script type="text/javascript">
+
+			</script>
+			
+			<!-- <div class="divider"> -->	
+			
+			<button type="button" class="btn btn-primary btn-xs" data-toggle="button" id="custRepButton" onClick="cstBtnChanged(this);">Customized Reports</button>
+			<script type="text/javascript">
+
+			</script>
+	</div>
+
+
+	
+		<div style="text-align:center">
+			<canvas id="graph_canvas" width="300" height="300"></canvas>
+		 </div>
+
+
+	</div><!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      
+    <!-- Modals
+    ================================================== -->
+	
+	<!--<div class="modal fade" id="customReport" tabindex="-1" role="report" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h2 class="modal-title" id="myModalLabel">Customized Graphs</h2>
+		  </div>
+		  <div class="modal-body">
+			<div class="repDropdown">
+			
+			 <a data-toggle="dropdown">Choose the type of report</a>
+			  <ul onClick= class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<li><a href="#DistTime"><span class="glyphicon glyphicon-stats"></span>Distance vs Time</a></li>
+				<li><a href="#DistDays"><span class="glyphicon glyphicon-stats"></span>Distance vs Days</a></li>
+				<li><a href="#DistActi"><span class="glyphicon glyphicon-stats"></span>Distance vs Activity</a></li> 
+				<li><a href="#Pointdays"><span class="glyphicon glyphicon-stats"></span>Points vs Days</a></li> 
+				<li><a href="#ActiDays"><span class="glyphicon glyphicon-stats"></span>Activity vs Days</a></li> 
+				<li><a href="#PointActi"><span class="glyphicon glyphicon-stats"></span>Points vs Activity</a></li> 	
+			  </ul>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal" onClick="genCustReport(this)">Generate</button>
+		  </div>
+		</div>
+	  </div>
+	</div> -->
+	
+	</body>
+  </html>

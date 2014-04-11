@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../assets/ico/favicon.ico">
+
+<title>P2P Demo Mode - Free Roam</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/flipswitch.css" rel="stylesheet">
+
+<style>
+body {
+	padding-top: 50px;
+}
+
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+	var watchID = null;
+	var geo; // for the geolocation object
+	var map; // for the google map object
+
+	var mapMarker; // the google map marker object
+	var startMarker;
+	var totalDistance = 0.0;
+	var lastLat;
+	var lastLong;
+
+	// position options
+	var MAXIMUM_AGE = 200; // miliseconds
+	var TIMEOUT = 300000;
+	var HIGHACCURACY = true;
+
+	cbChanged = function(checkboxElem) {
+		if (!checkboxElem.checked) {
+				startWatching();
+		} else {
+			stopWatching();
+			$('#freeroamsummary').modal('show');
+		}
+	}
+	
+
+	Number.prototype.toRadians = function() {
+		return this * Math.PI / 180;
+	}
+
+	function distance(latitude1, longitude1, latitude2, longitude2) {
+		// R is the radius of the earth in kilometers
+		var R = 6371;
+
+		var deltaLatitude = (latitude2 - latitude1).toRadians();
+		var deltaLongitude = (longitude2 - longitude1).toRadians();
+		latitude1 = latitude1.toRadians(), latitude2 = latitude2.toRadians();
+
+		var a = Math.sin(deltaLatitude / 2) * Math.sin(deltaLatitude / 2)
+				+ Math.cos(latitude1) * Math.cos(latitude2)
+				* Math.sin(deltaLongitude / 2) * Math.sin(deltaLongitude / 2);
+
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		var d = R * c;
+		return d;
+	}
+
+	function updateStatus(message) {
+		document.getElementById("status").innerHTML = message;
+	}
+
+	function updateLocation(position) {
+		var latitude = position.coords.latitude;
+		var longitude = position.coords.longitude;
+		var accuracy = position.coords.accuracy;
+		var timestamp = position.timestamp;
+		var currentDistance = distance(latitude, longitude, lastLat, lastLong);
+
+		document.getElementById("latitude").innerHTML = latitude;
+		document.getElementById("longitude").innerHTML = longitude;
+
+
+		// sanity test... don't calculate distance if accuracy
+		// value too large
+		if (accuracy >= 500) {
+			updateStatus("Need more accurate values to calculate distance.");
+			return;
+		}
+
+		// calculate distance
+		totalDistance += currentDistance;
+		document.getElementById("totalDist").innerHTML = totalDistance.toFixed(4) + " km";
+
+		var PathCoordinates = [
+		new google.maps.LatLng(startMarker.getPosition().coords.latitude,startMarker.getPosition().coords.longitude),
+		new google.maps.LatLng(latitude,longitude)
+		];
+		
+		var path = new google.maps.Polyline({
+			path: PathCoordinates,
+			geodesic: true,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+		 });
+		  
+		path.setMap(map);
+
+		
+		lastLat = latitude;
+		lastLong = longitude;
+		//updateStatus("Location successfully updated.");
+	}
+
+
+	function initialize(position) {
+
+		var lat = position.coords.latitude;
+		var lon = position.coords.longitude;
+		var latlng = new google.maps.LatLng(lat, lon);
+
+		lastLat = lat;
+		lastLong = lon;
+
+		var myOptions = {
+			zoom : 12,
+			center : latlng,
+
+			// mapTypeID --
+			// ROADMAP displays the default road map view
+			// SATELLITE displays Google Earth satellite images
+			// HYBRID displays a mixture of normal and satellite views
+			// TERRAIN displays a physical map based on terrain information.
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
+
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+		mapMarker = new google.maps.Marker({
+			position : latlng,
+			map : map,
+			title : "You are here."
+		});
+
+		updateLocation(position);
+
+	}
+
+	function show_map(position) {
+
+		var lat = position.coords.latitude;
+		var lon = position.coords.longitude;
+		var latlng = new google.maps.LatLng(lat, lon);
+
+		mapMarker.setPosition(latlng);
+
+		updateLocation(position);
+
+	}
+
+	function geo_error(error) {
+		stopWatching();
+		switch (error.code) {
+		case error.TIMEOUT:
+			alert('Geolocation Timeout');
+			break;
+		case error.POSITION_UNAVAILABLE:
+			alert('Geolocation Position unavailable');
+			break;
+		case error.PERMISSION_DENIED:
+			// alert('Geolocation Permission denied, Please allow Geolocation in your Browser');
+			$('#permDenied').modal('show');
+			break;
+		default:
+			alert('Geolocation returned an unknown error code: ' + error.code);
+		}
+	}
+
+	function stopWatching() {
+	
+		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) + " km";
+		
+		if (watchID != null){
+			navigator.geolocation.clearWatch(watchID);
+			watchID = null;
+		}
+	}
+
+	function startWatching() {
+		
+		var pos = new google.maps.LatLng(lastLat, lastLong);
+		startMarker = new google.maps.Marker({
+			position : pos,
+			map : map,
+			title : "START"
+		});
+		
+		
+		watchID = navigator.geolocation.watchPosition(show_map, geo_error, {
+			enableHighAccuracy : HIGHACCURACY,
+			timeout : TIMEOUT,
+			frequency : 1000
+		});
+	}
+
+	window.onload = function() {
+		navigator.geolocation.getCurrentPosition(initialize, geo_error);
+	}
+	
+
+
+</script>
+
+</head>
+
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">P2P Physical Activity Tracker</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="landing.html"> <span
+							class="glyphicon glyphicon-home"></span> Home
+					</a></li>
+					<!--<li><a href="#profile"><span-->
+							<!--class="glyphicon glyphicon-user"></span> My Profile</a></li>-->
+					<li><a href="reports.html"><span
+							class="glyphicon glyphicon-dashboard"></span> My Reports</a></li>
+					<!--<li><a href="#runs"><span-->
+							<!--class="glyphicon glyphicon-heart"></span> My Runs</a></li>-->
+					<li><a href="login.html"><span
+							class="glyphicon glyphicon-off"></span> Logout</a></li>
+
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	
+	<div class="navbar navbar-inverse points" style="background-color:#ffffff" role="displayInfo">
+      <div class="container">
+        <div class="navbar-header">
+          
+        </div class="toppad">
+			<img src="assets/Profile_Pic.png" width="50" height="50" alt="Hello"></img>
+			<strong>John Doe</strong>
+			<strong class="pull-right">1260 Points</strong>
+		<div>
+			<center><strong>Level 5</strong></center>
+			<!-- <center><img src="Progress_Bar.jpg" width="150" height="50" alt="Progress"></img></center> -->
+			<div class="progress progress-striped active" width="100">
+			<div class="progress-bar" width="100" style="width: 75%"></div>
+			</div>
+		</div>
+		
+			
+		
+        </div><!--/.nav-collapse -->
+      </div>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<div class="alert alert-dismissable alert-danger">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>ALERT!</strong> Click on the START switch to begin Challenge
+			</div>
+			<h1>Free Roam Mode</h1>
+			<div class="onoffswitch">
+				<input type="checkbox" name="onoffswitch"
+					class="onoffswitch-checkbox" id="myonoffswitch"
+					onClick="cbChanged(this);" checked> <label
+					class="onoffswitch-label" for="myonoffswitch">
+					<div class="onoffswitch-inner"></div>
+					<div class="onoffswitch-switch"></div>
+				</label>
+			</div>
+
+			<div class="jumbotron">
+
+				<span class="pull-left"> Latitude: <span class="muted"
+					id="latitude"></span></span>
+				<br /> <span class="pull-left"> Longitude: <span
+					class="muted" id="longitude"></span>
+				</span><br /><span class="pull-left"> Total Distance: <span
+					class="muted" id="totalDist"></span>
+				</span>
+				<input onclick="showMarkers();" style="visibility:hidden" type="button" value="SwitchDest" id="resetButton">
+				<br />
+				<div id="map_canvas" style="height: 300px;"></div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Modals
+    ================================================== -->
+
+	<div class="modal fade" id="permDenied" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Error</h4>
+				</div>
+				<div class="modal-body">Geolocation Permission denied. Please
+					allow Geolocation in your Browser</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="modal fade" id="freeroamsummary" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">You're Awesome</h4>
+				</div>
+				<div class="modal-body">
+					Total Distance Covered: <span class= "muted" id="totalDistFinal"></span> <br /> 
+					Points Earned : 40 Points
+				</div>
+				<div class="modal-footer">
+                    <a href="summary.html" class="btn btn-primary">OK</a>
+					<!--<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>
