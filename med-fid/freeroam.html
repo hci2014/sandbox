@@ -38,6 +38,11 @@ body {
 	var totalDistance = 0.0;
 	var lastLat;
 	var lastLong;
+	var timerm;
+	var timers;
+	var timeron;
+	var totalTime = 0.0;
+	var points = 0;
 
 	// position options
 	var MAXIMUM_AGE = 200; // miliseconds
@@ -188,7 +193,12 @@ body {
 
 	function stopWatching() {
 	
-		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) + " km";
+		totalDistance = 0.5;
+		stoptimer();
+		calcpoints();
+		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) ;
+		$('#totalTimeFinal').html(totalTime);
+		$('#points').html(points);
 		
 		if (watchID != null){
 			navigator.geolocation.clearWatch(watchID);
@@ -198,6 +208,7 @@ body {
 
 	function startWatching() {
 		
+		starttimer();
 		var pos = new google.maps.LatLng(lastLat, lastLong);
 		startMarker = new google.maps.Marker({
 			position : pos,
@@ -218,6 +229,45 @@ body {
 	}
 	
 
+	function calcpoints(){
+		var avgtime = totalDistance * 10; // avg speed of walking is 6km/60min or 10 min for every km
+		var timefactor = avgtime/totalTime;  // factor to multiply score by
+		var distfactor = 10; //10points are rewarded per km
+		
+		points = (totalDistance * distfactor * timefactor).toFixed();
+
+	}
+	
+	function starttimer(){
+		timers = 0;
+		timerm = 0;
+		timeron=true;
+		setTimeout('updatetimer()',999);
+	}
+	
+	function updatetimer(){
+	
+		timers++;
+		if(timers == 60){
+			timers=0;
+			timerm++;
+		}
+		$('#timer').html(num(timerm) + ' : '+ num(timers));
+		if(timeron)
+		setTimeout('updatetimer()',999);
+	}
+	
+	function stoptimer(){
+	timeron = false;
+	totalTime = timerm + (timers/60);
+	}
+	
+	function num(x) {
+	var str = '' + x;
+	if(x<10)
+	str = '0' + x;
+	return str;
+	}
 
 </script>
 
@@ -296,15 +346,8 @@ body {
 			</div>
 
 			<div class="jumbotron">
-
-				<span class="pull-left"> Latitude: <span class="muted"
-					id="latitude"></span></span>
-				<br /> <span class="pull-left"> Longitude: <span
-					class="muted" id="longitude"></span>
-				</span><br /><span class="pull-left"> Total Distance: <span
-					class="muted" id="totalDist"></span>
-				</span>
-				<input onclick="showMarkers();" style="visibility:hidden" type="button" value="SwitchDest" id="resetButton">
+				</span><br /><span class="pull-left"> Total Distance: <span class="muted" id="totalDist">0.0 Km</span></span>
+				<span class="pull-right"> Timer: <span class="muted" id="timer">00 : 00</span></span>
 				<br />
 				<div id="map_canvas" style="height: 300px;"></div>
 			</div>
@@ -355,11 +398,12 @@ body {
 					<h4 class="modal-title" id="myModalLabel">You're Awesome</h4>
 				</div>
 				<div class="modal-body">
-					Total Distance Covered: <span class= "muted" id="totalDistFinal"></span> <br /> 
-					Points Earned : 40 Points
+					Total Distance Covered: <span class= "muted" id="totalDistFinal"></span> Km<br />
+					Total Distance Covered: <span class= "muted" id="totalTimeFinal"></span> Minutes <br />
+					<strong>Points Earned : <span id="points"></span> Points </strong>
 				</div>
 				<div class="modal-footer">
-                    <a href="summary.html" class="btn btn-primary">OK</a>
+                    <a href="summary.html" class="btn btn-primary" data-dismiss="modal">OK</a>
 					<!--<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>-->
 				</div>
 			</div>

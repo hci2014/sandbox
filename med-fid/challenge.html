@@ -42,6 +42,11 @@ body {
 	var totalDistance = 0.0;
 	var lastLat;
 	var lastLong;
+	var timerm;
+	var timers;
+	var timeron;
+	var totalTime = 0.0;
+	var points = 0;
 
 	// position options
 	var MAXIMUM_AGE = 200; // miliseconds
@@ -50,10 +55,12 @@ body {
 
 	cbChanged = function(checkboxElem) {
 		if (!checkboxElem.checked) {
+			$('#switchdiv').popover('show');
 			if(destselected == true) 
 				startWatching();
-			else
+			else{
 				document.getElementById('myonoffswitch').checked = true ;
+				}
 		} else {
 			stopWatching();
 			$('#challengesummary').modal('show');
@@ -103,9 +110,6 @@ body {
 		var timestamp = position.timestamp;
 		var currentDistance = distance(latitude, longitude, lastLat, lastLong);
 
-		document.getElementById("latitude").innerHTML = latitude;
-		document.getElementById("longitude").innerHTML = longitude;
-
 
 		// sanity test... don't calculate distance if accuracy
 		// value too large
@@ -133,7 +137,7 @@ body {
 		var latlng2 = new google.maps.LatLng(lat - 0.02, lon - 0.012);
 		var latlng3 = new google.maps.LatLng(lat + 0.006, lon - 0.02);
 		var latlng4 = new google.maps.LatLng(lat - 0.004, lon + 0.018);
-
+		
 		lastLat = lat;
 		lastLong = lon;
 
@@ -253,9 +257,14 @@ body {
 	}
 
 	function stopWatching() {
-		
+	
+		totalDistance = 0.5;
+		stoptimer();
+		calcpoints();
 		document.getElementById("resetButton").style.visibility = "visible";
-		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) + " km";
+		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) ;
+		$('#totalTimeFinal').html(totalTime);
+		$('#points').html(points);
 		
 		if (watchID != null){
 			navigator.geolocation.clearWatch(watchID);
@@ -264,6 +273,8 @@ body {
 	}
 
 	function startWatching() {
+	
+		starttimer();
 		document.getElementById("resetButton").style.visibility = "hidden";
 		watchID = navigator.geolocation.watchPosition(show_map, geo_error, {
 			enableHighAccuracy : HIGHACCURACY,
@@ -277,6 +288,47 @@ body {
 	}
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
+	
+	function calcpoints(){
+		var avgtime = totalDistance * 10; // avg speed of walking is 6km/60min or 10 min for every km
+		var timefactor = avgtime/totalTime;  // factor to multiply score by
+		var distfactor = 10; //10points are rewarded per km
+		
+		points = (totalDistance * distfactor * timefactor).toFixed();
+
+	}
+	
+	function starttimer(){
+		timers = 0;
+		timerm = 0;
+		timeron=true;
+		setTimeout('updatetimer()',999);
+	}
+	
+	function updatetimer(){
+	
+		timers++;
+		if(timers == 60){
+			timers=0;
+			timerm++;
+		}
+		$('#timer').html(num(timerm) + ' : '+ num(timers));
+		if(timeron)
+		setTimeout('updatetimer()',999);
+	}
+	
+	function stoptimer(){
+	timeron = false;
+	totalTime = timerm + (timers/60);
+	}
+	
+	function num(x) {
+	var str = '' + x;
+	if(x<10)
+	str = '0' + x;
+	return str;
+	}
+	
 
 </script>
 
@@ -340,15 +392,13 @@ body {
 
 		<div class="starter-template">
 			<div class="alert alert-dismissable alert-danger">
-				<button type="button" class="close" data-dismiss="alert">×</button>
+				<button type="button" class="close" data-dismiss="alert" >×</button>
 				<strong>ALERT!</strong> Select a destination on the map and Click on the START switch to begin Challenge
 			</div>
 			<h1>Challenge Mode</h1>
-			<div class="onoffswitch">
-				<input type="checkbox" name="onoffswitch"
-					class="onoffswitch-checkbox" id="myonoffswitch"
-					onClick="cbChanged(this);" checked> <label
-					class="onoffswitch-label" for="myonoffswitch">
+			<div class="onoffswitch" >
+				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onClick="cbChanged(this);" checked> 
+				<label	class="onoffswitch-label" for="myonoffswitch" id="switchdiv" data-toggle="popover" data-content="Please click on a destination marker first!">
 					<div class="onoffswitch-inner"></div>
 					<div class="onoffswitch-switch"></div>
 				</label>
@@ -356,16 +406,12 @@ body {
 
 			<div class="jumbotron">
 
-				<span class="pull-left"> Latitude: <span class="muted"
-					id="latitude"></span></span>
-				<br /> <span class="pull-left"> Longitude: <span
-					class="muted" id="longitude"></span>
-				</span><br /><span class="pull-left"> Total Distance: <span
-					class="muted" id="totalDist"></span>
-				</span>
+				<span class="pull-left"> Total Distance: <span class="muted" id="totalDist"></span></span>
 				<input onclick="showMarkers();" style="visibility:hidden" type="button" class="btn btn-primary" value="Switch Destination" id="resetButton">
+				<span class="pull-right"> Timer: <span class="muted" id="timer">00 : 00</span></span>
 				<br />
 				<div id="map_canvas" style="height: 300px;"></div>
+				
 			</div>
 		</div>
 
@@ -414,12 +460,13 @@ body {
 					<h4 class="modal-title" id="myModalLabel">You're Awesome</h4>
 				</div>
 				<div class="modal-body">
-					Total Distance Covered: <span class= "muted" id="totalDistFinal"></span> <br /> 
-					Points Earned : 40 Points
+					Total Distance Covered: <span class= "muted" id="totalDistFinal"></span> km<br />
+					Total Distance Covered: <span class= "muted" id="totalTimeFinal"></span> Minutes <br />
+					<strong>Points Earned : <span id="points"></span> Points </strong>
 				</div>
 				<div class="modal-footer">
 
-				<a href="summary.html" class="btn btn-primary">OK</a>
+				<a href="summary.html" class="btn btn-primary" data-dismiss="modal">OK</a>
                     <!--<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>-->
 
                 </div>
