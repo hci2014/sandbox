@@ -151,6 +151,9 @@
 			$('#customReport').modal('show');
 		} */
 		
+		var ddVal = $('#myselect').find('option:selected').text();
+		alert(ddVal);
+		
 		
 		
     </script>
@@ -205,9 +208,17 @@
       </div>
     </div>
 
+	<select id="myselect">
+		<option value="1">Mr</option>
+		<option value="2">Mrs</option>
+		<option value="3">Ms</option>
+		<option value="4">Dr</option>
+		<option value="5">Prof</option>
+	</select>
+	
 	<div class="starter-template">
 	<h2><strong>Reports</strong></h2> 
-
+			
 			<button type="button" class="btn btn-primary btn-xs" data-toggle="button" id="dlyRepButton" onClick="drBtnChanged(this);">Daily Reports</button>
 			<script type="text/javascript">
 			$().button('toggle')

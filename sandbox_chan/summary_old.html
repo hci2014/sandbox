@@ -24,18 +24,6 @@
   text-align: center;
 }
 
-.panel-heading .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color: grey;         /* adjust as needed */
-}
-.panel-heading .accordion-toggle.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
-}
-
  </style>
   </head>
 
@@ -86,68 +74,31 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
-
-<div class="container">
+	
+	<div class="container">
+	
 	<div class="row clearfix">
 		<div class="col-md-8 column">
-		<div class="jumbotron">
-			<div class="row clearfix">
-				<div class="col-md-6 column">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								Panel title
-							</h3>
-						</div>
-						<div class="panel-body">
-							Panel content
-						</div>
-						<div class="panel-footer">
-							Panel footer
-						</div>
-					</div>
-				</div>
-				 <div class="col-md-6 column"> 
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								Panel title
-							</h3>
-						</div>
-						<div class="panel-body">
-							Panel content
-						</div>
-						<div class="panel-footer">
-							Panel footer
-						</div>
-					</div>
-				</div>
-				<div class="row clearfix" align="center">
-				<div class ="col-md-4 column">
-				</div>
-				<div class="col-lg-4 column" align="center">
-			 <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#saveModal">Save</button>
-			 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#deleteModal">Discard</button>
-		</div>
-		<div class ="col-md-4 column">
-				</div>
+			<div class="jumbotron">
+				<h2>
+					Good run!
+				</h2>
+				<p>
+					Points Gained : 40 <br>
+					Distance covered : 1 mile <br>
+					Current Level : Level 5 <br>
+					Personal Best : 70
+				</p>
 			</div>
-			</div>
-		</div>
 		</div>
 		
 		<div class="col-md-4 column">
-			<div class="panel-group" id="accordian">
+			<div class="panel-group" id="panel-730734">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						 <h4 class="panel-title">
-						 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-							View Suggestions
-						</a>
-						</h4>
+						 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-730734" href="#panel-element-659170">View Suggestions</a>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse in">
+					<div id="panel-element-659170" class="panel-collapse collapse in">
 						<div class="panel-body">
 							<p>
 								<ul>
@@ -160,12 +111,20 @@
 				</div>
 			</div>
 		</div>
-
 		
 	</div>
-</div>
-
-<!-- Modal -->
+	<div class="row clearfix">
+		<div class="col-xs-4 column">
+			 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#saveModal">Save</button>
+		</div>
+		<div class="col-xs-4 column">
+			 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteModal">Discard</button>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+	</div>
+	
+	<!-- Modal -->
 	<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -199,7 +158,9 @@
 			</div>
 		 </div>
 	</div>
-
+	
+</div>
+	
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
