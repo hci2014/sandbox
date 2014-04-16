@@ -196,7 +196,7 @@ body {
 		totalDistance = 0.5;
 		stoptimer();
 		calcpoints();
-		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(4) ;
+		document.getElementById("totalDistFinal").innerHTML = totalDistance.toFixed(2) ;
 		$('#totalTimeFinal').html(totalTime);
 		$('#points').html(points);
 		
@@ -230,11 +230,16 @@ body {
 	
 
 	function calcpoints(){
+		if(totalTime > 0.1){
 		var avgtime = totalDistance * 10; // avg speed of walking is 6km/60min or 10 min for every km
 		var timefactor = avgtime/totalTime;  // factor to multiply score by
 		var distfactor = 10; //10points are rewarded per km
 		
 		points = (totalDistance * distfactor * timefactor).toFixed();
+		}
+		else{
+		points = 0;
+		}
 
 	}
 	
@@ -260,6 +265,7 @@ body {
 	function stoptimer(){
 	timeron = false;
 	totalTime = timerm + (timers/60);
+	totalTime = Math.round(totalTime * 100)/100;
 	}
 	
 	function num(x) {
