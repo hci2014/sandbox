@@ -36,81 +36,54 @@
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
-.radial-progress {
-  @circle-background: #d6dadc;
-  @circle-color: #97a71d;
-  background-color: @circle-background;
-  @circle-size: 120px;
-  width: @circle-size;
-  height: @circle-size;
-  .circle .fill {
-    background-color: @circle-color;
-	width: @circle-size;
-    height: @circle-size;
-  }
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+
+.wrap {
+  width: 600px;
+  margin: 0 auto;
 }
-
-$barColor: tomato
-$overlayColor: #fffde8
-$backColor: #2f3439
-
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans)
-
-body
-  padding: 30px 0
-  background-color: $backColor
-  font-family: 'Noto Sans', sans-serif
-
-.wrap
-  width: 600px
-  margin: 0 auto
 
 /* -------------------------------------
  * Bar container
  * ------------------------------------- */
-.progress-radial
-  float: left
-  margin-right: 30px
-  position: relative
-  width: 100px
-  height: 100px
-  border-radius: 50%
-  border: 2px solid $backColor // remove gradient color
-  background-color: $barColor // default 100%
+.progress-radial {
+  float: left;
+  margin-right: 30px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #2f3439;
+  background-color: tomato;
+}
 
 /* -------------------------------------
  * Optional centered circle w/text
- * ------------------------------------- */  
-.progress-radial .overlay
-  position: absolute
-  width: 60px
-  height: 60px
-  background-color: $overlayColor
-  border-radius: 50%
-  margin-left: 20px
-  margin-top: 20px
-  text-align: center
-  line-height: 60px
-  font-size: 16px
-  
+ * ------------------------------------- */
+.progress-radial .overlay {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-top: 20px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 16px;
+}
+
 /* -------------------------------------
  * Mixin for progress-% class
  * ------------------------------------- */
 
-$step: 5 // step of % for created classes
+.progress-40 {
+  background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);
+}
 
-$loops: round(100 / $step)
-$increment: 360 / $loops
-$half: round($loops / 2)
-@for $i from 0 through $loops
-  .progress-#{$i*$step}
-    @if $i < $half
-      $nextdeg: 90deg + ( $increment * $i )
-      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $barColor 50%, $backColor 50%, $backColor)
-    @else
-      $nextdeg: -90deg + ( $increment * ( $i - $half ) )
-      background-image: linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent), linear-gradient(270deg, $barColor 50%, $backColor 50%, $backColor)
-
+.progress-45 {
+  background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);
+}
 
  </style>
   </head>
@@ -169,6 +142,7 @@ $half: round($loops / 2)
 		<div class="col-md-8 column">
 		<div class="jumbotron">
 			<div class="row clearfix">
+			<h3> Result Summary </h3>
 				<div class="col-md-6 column">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -178,8 +152,8 @@ $half: round($loops / 2)
 						</div>
 						<div class="panel-body">
 							<div class="wrap">
-								<div class="progress-radial progress-25">
-								  <div class="overlay">45%</div>
+								<div class="progress-radial progress-45">
+								  <div class="overlay">45</div>
 								</div>
 							</div>
 						</div>
