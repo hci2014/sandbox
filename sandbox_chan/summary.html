@@ -36,6 +36,82 @@
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
+.radial-progress {
+  @circle-background: #d6dadc;
+  @circle-color: #97a71d;
+  background-color: @circle-background;
+  @circle-size: 120px;
+  width: @circle-size;
+  height: @circle-size;
+  .circle .fill {
+    background-color: @circle-color;
+	width: @circle-size;
+    height: @circle-size;
+  }
+}
+
+$barColor: tomato
+$overlayColor: #fffde8
+$backColor: #2f3439
+
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans)
+
+body
+  padding: 30px 0
+  background-color: $backColor
+  font-family: 'Noto Sans', sans-serif
+
+.wrap
+  width: 600px
+  margin: 0 auto
+
+/* -------------------------------------
+ * Bar container
+ * ------------------------------------- */
+.progress-radial
+  float: left
+  margin-right: 30px
+  position: relative
+  width: 100px
+  height: 100px
+  border-radius: 50%
+  border: 2px solid $backColor // remove gradient color
+  background-color: $barColor // default 100%
+
+/* -------------------------------------
+ * Optional centered circle w/text
+ * ------------------------------------- */  
+.progress-radial .overlay
+  position: absolute
+  width: 60px
+  height: 60px
+  background-color: $overlayColor
+  border-radius: 50%
+  margin-left: 20px
+  margin-top: 20px
+  text-align: center
+  line-height: 60px
+  font-size: 16px
+  
+/* -------------------------------------
+ * Mixin for progress-% class
+ * ------------------------------------- */
+
+$step: 5 // step of % for created classes
+
+$loops: round(100 / $step)
+$increment: 360 / $loops
+$half: round($loops / 2)
+@for $i from 0 through $loops
+  .progress-#{$i*$step}
+    @if $i < $half
+      $nextdeg: 90deg + ( $increment * $i )
+      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $barColor 50%, $backColor 50%, $backColor)
+    @else
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) )
+      background-image: linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent), linear-gradient(270deg, $barColor 50%, $backColor 50%, $backColor)
+
+
  </style>
   </head>
 
@@ -97,29 +173,35 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								Panel title
+								Completed Physical Activity Result
 							</h3>
 						</div>
 						<div class="panel-body">
-							Panel content
+							<div class="wrap">
+								<div class="progress-radial progress-25">
+								  <div class="overlay">45%</div>
+								</div>
+							</div>
 						</div>
-						<div class="panel-footer">
-							Panel footer
 						</div>
-					</div>
 				</div>
 				 <div class="col-md-6 column"> 
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								Panel title
+								Summary of Physical Activities
 							</h3>
 						</div>
 						<div class="panel-body">
-							Panel content
-						</div>
-						<div class="panel-footer">
-							Panel footer
+							<p>
+								<ul>
+									<li>Number of activities : 10</li>
+									<li>Total Distance covered : 5 miles</li>
+									<li>Personal Best Score : 80 Points</li>
+									<li>Personal Best Distance : 1.2 miles</li>
+									<li>Points to next level : 120 Points</li>
+								</ul>
+							<p>
 						</div>
 					</div>
 				</div>
