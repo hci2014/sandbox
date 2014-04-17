@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <meta name="author" content="">
+
+    <title>P2P graphs</title>
+
+	    <link href="js/style.css" rel="stylesheet" type="text/css" />
+        <link href="js/prettify.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script language="JavaScript" src="js/FusionCharts.js"></script>
+        <script type="text/javascript" src="js/prettify.js"></script>
+        <script type="text/javascript" src="js/json2.js"></script>
+        <script type="text/javascript" src="js/lib.js" ></script>
+		<script type="text/javascript" src="js/3DChart_Area_1.js" ></script>
+		<script type="text/javascript" src="js/jscharts.js"></script>
+
+	
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flipswitch.css" rel="stylesheet">
+    <style>
+-->
+
+ div.hidden {
+	display : none;
+ }
+
+.headfont {
+	padding-left : 100px;
+	font-size    : 20px;
+	padding-top	 : 20px;
+}
+
+ body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.divider {
+	padding: 40px 15px;
+	width: 10px;
+	height: auto;
+	display: inline-block;
+}
+
+.toppad {
+	padding-top: 0px;
+}
+
+ </style>
+     
+	<script src="js/Chart.js"></script>
+    <script type="text/javascript">
+	
+		function clearCanvas(context, canvas) {
+		  context.clearRect(0, 0, canvas.width, canvas.height);
+		  var w = canvas.width;
+		  canvas.width = 1;
+		  canvas.width = w;
+		}
+        
+		function drBtnChanged(){
+			//alert('Daily reports');
+			/*$(document).ready(function() {
+				$("div#dDiv").removeClass("hidden");
+				
+				var  dDiv = document.getElementById("dDiv");
+				var dGraph = document.getElementById("dgraph_canvas");
+				dDiv.style.display = dDiv.style.display == "none" ? "block" : "block";
+				dGraph.style.display = dGraph.style.display == "none" ? "block" : "block";
+				
+				var  wDiv = document.getElementById("wDiv");
+				var wGraph = document.getElementById("wgraph_canvas")
+				wDiv.style.display = wDiv.style.display == "none" ? "block" : "none";
+				wGraph.style.display = wGraph.style.display == "none" ? "block" : "none";
+				
+				var  mDiv = document.getElementById("mDiv");
+				var mGraph = document.getElementById("mgraph_canvas")
+				mDiv.style.display = mDiv.style.display == "none" ? "block" : "none";
+				mGraph.style.display = mGraph.style.display == "none" ? "block" : "none";
+				
+				//$("div#dDiv).hide();
+				//$("div#status-bar").show();
+			}); */
+			
+			/*document.getElementById("graph_canvas").getContext('2d');
+			var data = {
+			labels : ["10:00","11:00","12:00","13:00","14:00","15:00","16:00"],
+			<!-- labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], -->
+			datasets : [
+			/*{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : [65,59,90,81,56,55,40]
+			}
+			,*/
+			/*{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				pointColor : "rgba(151,187,205,1)",
+				pointStrokeColor : "#fff",
+				data : [28,48,40,19,96,27,100]
+			}
+			]
+		};
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var dCanvas = document.getElementById("graph_canvas");
+			dCanvas.width = 300;
+			dCanvas.height = 300;
+			var orgWidth = dCanvas.width;
+			//alert('original width is: '+orgWidth);
+			var dChart = document.getElementById("graph_canvas").getContext("2d");
+			var dailyChart = new Chart(dChart).Line(data,options);
+			//alert('later width is: '+dCanvas.width);
+			clearCanvas(dCanvas,dChart);
+			
+			
+			/*var chart = AmCharts.makeChart("chartdiv", {
+			"theme": "none",
+			"type": "serial",
+			"dataProvider": [{
+				"time": "10:00",
+				"year2004": 50
+			}, {
+				"time": "11:00",
+				"year2004": 40,
+			}, {
+				"time": "12:00",
+				"year2004": 26,
+			}, {
+				"time": "13:00",
+				"year2004": 60,
+			}, {
+				"time": "14:00",
+				"year2004": 23
+			}, {
+				"time": "15:00",
+				"year2004": 64
+			}, {
+				"time": "16:00",
+				"year2004": 45
+			}],
+			"valueAxes": [{
+				"stackType": "3d",
+				"unit": "",
+				"position": "left",
+				"title": "Calories",
+			}],
+			"startDuration": 1,
+			"graphs": [{
+				"balloonText": "Calories burnt at [[category]]: <b>[[value]]</b>",
+				"fillAlphas": 0.9,
+				"lineAlpha": 0.2,
+				"title": "2004",
+				"type": "column",
+				"valueField": "year2004"
+			}, {
+				"balloonText": "Calories burnt at [[category]]: <b>[[value]]</b>",
+				"fillAlphas": 0.9,
+				"lineAlpha": 0.2,
+				"title": "2005",
+				"type": "column",
+				"valueField": "year2005"
+			}],
+			"plotAreaFillAlphas": 0.1,
+			"depth3D": 60,
+			"angle": 30,
+			"categoryField": "time",
+			"categoryAxis": {
+				"gridPosition": "start"
+			},
+			"exportConfig":{
+				"menuTop":"20px",
+				"menuRight":"20px",
+				"menuItems": [{
+				"icon": '/lib/3/images/export.png',
+				"format": 'png'	  
+				}]  
+			}
+		});*/
+		
+			var myData = new Array(['Walking', 42], ['Running', 38], ['Gym', 10], ['Cycling', 7], ['Misc', 2]);
+			var colors = ['#C40000', '#750303', '#F9ECA2', '#FA9000', '#FA5400'];
+			var myChart = new JSChart('chartdiv', 'pie');
+			myChart.setDataArray(myData);
+			myChart.colorizePie(colors);
+			myChart.setTitle('Daily Activities Summary');
+			myChart.setTitleColor('#8E8E8E');
+			myChart.setTitleFontSize(11);
+			//myChart.setTextPaddingTop(30);
+			//myChart.setSize(616, 321);
+			myChart.setSize(300, 250);
+			myChart.setPieRadius(85);
+			myChart.setPieUnitsColor('#555');
+			myChart.setBackgroundImage('chart_bg.jpg');
+			myChart.draw();
+		}
+
+		function wkBtnChanged(){
+		
+		/*$(document).ready(function() {
+				$("div#wDiv").removeClass("hidden");
+				
+				var  dDiv = document.getElementById("dDiv");
+				var dGraph = document.getElementById("dgraph_canvas");
+				dDiv.style.display = dDiv.style.display == "none" ? "block" : "none";
+				dGraph.style.display = dGraph.style.display == "none" ? "block" : "none";
+				
+				var  wDiv = document.getElementById("wDiv");
+				var wGraph = document.getElementById("wgraph_canvas")
+				wDiv.style.display = wDiv.style.display == "none" ? "block" : "block";
+				wGraph.style.display = wGraph.style.display == "none" ? "block" : "block";
+				
+				var  mDiv = document.getElementById("mDiv");
+				var mGraph = document.getElementById("mgraph_canvas")
+				mDiv.style.display = mDiv.style.display == "none" ? "block" : "none";
+				mGraph.style.display = mGraph.style.display == "none" ? "block" : "none";
+				
+				//$("div#dDiv).hide();
+				//$("div#status-bar").show();
+			});*/
+			
+			/*var data = {
+			labels : ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+			datasets : [
+			/*{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				data : [65,59,90,81,56,55,40]
+			},*/
+			/*{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				data : [28,48,40,19,96,27,100]
+			}
+		]
+		};
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var wCanvas = document.getElementById("graph_canvas");
+			wCanvas.width = 300;
+			wCanvas.height = 300;
+			var realWidth = wCanvas.width;
+			//alert('realWidth is: '+realWidth);
+			var wChart = document.getElementById("graph_canvas").getContext("2d");
+			var weeklyChart = new Chart(wChart).Bar(data,options);
+			//alert('realWidth is: '+wCanvas.width);
+			clearCanvas(wCanvas, wChart); */
+			
+			
+			/*var chart = AmCharts.makeChart("chartdiv", {
+				"type": "pie",	
+				"theme": "none",
+				"legend": {
+					"markerType": "circle",
+					"position": "right",
+					"marginRight": 80,		
+					"autoMargins": false
+				},
+				"dataProvider": [{
+					"day": "Monday",
+					"calories": 25.9
+				}, {
+					"day": "Tuesday",
+					"calories": 131.1
+				}, {
+					"day": "Wednesday",
+					"calories": 115.8
+				}, {
+					"day": "Thursday",
+					"calories": 109.9
+				}, {
+					"day": "Friday",
+					"calories": 108.3
+				}, {
+					"day": "Saturday",
+					"calories": 65
+				}, {
+					"day": "Sunday",
+					"calories": 40
+				}],
+				"valueField": "calories",
+				"titleField": "day",
+				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+				"exportConfig": {
+					"menuTop":"0px",
+					"menuItems": [{
+						"icon": '/lib/3/images/export.png',
+						"format": 'png'
+					}]
+				}
+			}); */
+			
+			var myData = new Array(['Mon', 2], ['Tue', 1], ['Wed', 3], ['Thu', 6], ['Fri', 8], ['Sat', 10], ['Sun', 9]);
+			var colors = ['#CE0000', '#EF2323', '#D20202', '#A70000', '#850000', '#CE0000', '#BA0000'];
+			var myChart = new JSChart('chartdiv', 'bar');
+			myChart.setDataArray(myData);
+			myChart.colorizeBars(colors);
+			myChart.setTitle('Weekly Workout Summary');
+			myChart.setAxisColor('#9D9F9D');
+			myChart.setAxisWidth(1);
+			myChart.setAxisNameX('Days');
+			myChart.setAxisNameY('Calories');
+			myChart.setAxisNameColor('#000000');
+			myChart.setAxisNameFontSize(9);
+			myChart.setAxisPaddingTop(60);
+			myChart.setAxisPaddingLeft(50);
+			myChart.setAxisPaddingBottom(60);
+			myChart.setTextPaddingBottom(20);
+			myChart.setTextPaddingLeft(35);
+			myChart.setAxisValuesDecimals(1);
+			myChart.setAxisValuesColor('#9C1919');
+			myChart.setTextPaddingLeft(15);
+			myChart.setSize(300, 250);
+			myChart.setBarValuesColor('#9C1919');
+			myChart.setBarBorderWidth(0);
+			myChart.setTitleColor('#8C8382');
+			myChart.setGridColor('#5D5F5D');
+			myChart.draw();
+
+		}
+
+	
+		function mtBtnChanged(){
+		
+		/*$(document).ready(function() {
+				$("div#mDiv").removeClass("hidden");
+				
+				var  dDiv = document.getElementById("dDiv");
+				var dGraph = document.getElementById("dgraph_canvas");
+				dDiv.style.display = dDiv.style.display == "none" ? "block" : "none";
+				dGraph.style.display = dGraph.style.display == "none" ? "block" : "none";
+				
+				var  wDiv = document.getElementById("wDiv");
+				var wGraph = document.getElementById("wgraph_canvas")
+				wDiv.style.display = wDiv.style.display == "none" ? "block" : "none";
+				wGraph.style.display = wGraph.style.display == "none" ? "block" : "none";
+				
+				var  mDiv = document.getElementById("mDiv");
+				var mGraph = document.getElementById("mgraph_canvas");
+				mDiv.style.display = mDiv.style.display == "none" ? "block" : "block";
+				mGraph.style.display = mGraph.style.display == "none" ? "block" : "block";
+				
+				//$("div#dDiv).hide();
+				//$("div#status-bar").show();
+			}); */
+		
+		
+			/*var mCanvas = document.getElementById("graph_canvas");
+			mCanvas.width = 300;
+			mCanvas.height = 300;
+			
+			// Working code starts here
+			/*document.getElementById("graph_canvas").getContext("2d");
+			var data = {
+			//labels : ["10:00","11:00","12:00","13:00","14:00","15:00","16:00"],
+			labels : ["Jan","Feb","Mar","Apr","May","June","July"],
+			datasets : [
+			/*{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : [65,59,90,81,56,55,40]
+			}
+			,*/
+			/*{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,1)",
+				pointColor : "rgba(151,187,205,1)",
+				pointStrokeColor : "#fff",
+				data : [100,27,96,19,40,48,54]
+			}
+			]
+		};
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var mCanvas = document.getElementById("graph_canvas");
+			mCanvas.width = 300;
+			mCanvas.height = 300;
+			var orgWidth = mCanvas.width;
+			//alert('original width is: '+orgWidth);
+			var mChart = document.getElementById("graph_canvas").getContext("2d");
+			var monthlyChart = new Chart(mChart).Line(data,options);
+			//alert('later width is: '+mCanvas.width);
+			clearCanvas(mCanvas,mChart);*/
+			
+			/*var data = [
+				{
+					value: 30,
+					color:"#F7464A"
+				},
+				{
+					value : 50,
+					color : "#E2EAE9"
+				},
+				{
+					value : 100,
+					color : "#D4CCC5"
+				},
+				{
+					value : 40,
+					color : "#949FB1"
+				},
+				{
+					value : 120,
+					color : "#4D5360"
+				}
+
+			];
+		
+			var options = {
+				scaleFontColor: "#f00",
+				datasetStrokeWidth: 5
+			};
+			
+			var mCanvas = document.getElementById("graph_canvas");
+			var preWidth = mCanvas.width;
+			//alert('preWidth is: '+preWidth);
+			var mChart = document.getElementById("graph_canvas").getContext("2d");
+			var monthlyChart = new Chart(mChart).Doughnut(data,options);
+			clearCanvas(mCanvas,  mChart);
+			//alert('PostWidth is :'+mCanvas.width);
+			
+			
+			
+			/*var chartData = generateChartData();
+			var chart = AmCharts.makeChart("chartdiv", {
+				"type": "serial",
+				"theme": "none",
+				"pathToImages": "http://www.amcharts.com/lib/3/images/",
+				"dataProvider": chartData,
+				"valueAxes": [{
+					"axisAlpha": 0.2,
+					"dashLength": 1,
+					"position": "left"
+				}],
+				"graphs": [{
+					"id":"g1",
+					"balloonText": "[[category]]<br /><b><span style='font-size:14px;'>value: [[value]]</span></b>",
+					"bullet": "round",
+					"bulletBorderAlpha": 1,
+					"bulletColor":"#FFFFFF",
+					"hideBulletsCount": 50,
+					"title": "red line",
+					"valueField": "visits",
+					"useLineColorForBulletBorder":true
+				}],
+				"chartScrollbar": {
+					"autoGridCount": true,
+					"graph": "g1",
+					"scrollbarHeight": 40
+				},
+				"chartCursor": {
+					"cursorPosition": "mouse"
+				},
+				"categoryField": "date",
+				"categoryAxis": {
+					"parseDates": true,
+					"axisColor": "#DADADA",
+					"dashLength": 1,
+					"minorGridEnabled": true
+				},
+				"exportConfig":{
+				  menuRight: '20px',
+				  menuBottom: '30px',
+				  menuItems: [{
+				  icon: 'http://www.amcharts.com/lib/3/images/export.png',
+				  format: 'png'	  
+				  }]  
+				}
+			});
+
+			chart.addListener("rendered", zoomChart);
+			zoomChart();*/
+			
+			//Fusion charts 
+			/*if (GALLERY_RENDERER && GALLERY_RENDERER.search(/javascript|flash/i)==0)  FusionCharts.setCurrentRenderer(GALLERY_RENDERER);  
+			var chart = new FusionCharts("js//MSCombi3D.swf", "ChartId", "560", "400", "0", "0");
+		    chart.setXMLData( dataString );		   
+		    chart.render("chartdiv");*/
+			
+			var myData = new Array(['Jan', 69.5], ['Feb', 38], ['Mar', 56], ['Apr', 28], ['May', 146], ['June', 27], ['July', 49]);
+			var colors = ['#CE0000', '#EF2323', '#D20202', '#A70000', '#850000', '#CE0000', '#BA0000'];
+			var myChart = new JSChart('chartdiv', 'bar');
+			myChart.setDataArray(myData);
+			myChart.colorizeBars(colors);
+			myChart.setTitle('Monthly Workout Summary');
+			myChart.setTitleColor('#8E8E8E');
+			myChart.setAxisNameX('Months');
+			myChart.setAxisNameY('Calories');
+			myChart.setAxisColor('#c6c6c6');
+			myChart.setAxisWidth(1);
+			myChart.setAxisNameColor('#000000');
+			myChart.setAxisValuesColor('#939393');
+			myChart.setAxisPaddingTop(60);
+			myChart.setAxisPaddingLeft(50);
+			myChart.setAxisPaddingBottom(60);
+			myChart.setTextPaddingBottom(20);
+			myChart.setTextPaddingLeft(15);
+			myChart.setTitleFontSize(11);
+			myChart.setBarBorderWidth(0);
+			myChart.setBarSpacingRatio(50);
+			myChart.setBarValuesColor('#737373');
+			myChart.setGrid(false);
+			myChart.setSize(300, 250);
+			myChart.setBackgroundImage('chart_bg.jpg');
+			myChart.draw();
+		}
+		
+		
+		// this method is called when chart is first inited as we listen for "dataUpdated" event
+			/*function zoomChart() {
+				// different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+				chart.zoomToIndexes(chartData.length - 40, chartData.length - 1);
+			}
+		
+		// generate some random data, quite different range
+			function generateChartData() {
+				var chartData = [];
+				var firstDate = new Date();
+				firstDate.setDate(firstDate.getDate() - 5);
+
+				for (var i = 0; i < 1000; i++) {
+					// we create date objects here. In your data, you can have date strings
+					// and then set format of your dates using chart.dataDateFormat property,
+					// however when possible, use date objects, as this will speed up chart rendering.
+					var newDate = new Date(firstDate);
+					newDate.setDate(newDate.getDate() + i);
+
+					var visits = Math.round(Math.random() * (40 + i / 5)) + 20 + i;
+
+					chartData.push({
+						date: newDate,
+						visits: visits
+					});
+				}
+				return chartData;
+			} */
+		
+		/*function genCustReport(){
+			<!--var custRepTyp = $(this).text();-->
+			<!-- var custRepTyp = $(this).parents(".repDropdown").find('.selection').text($(this).text()); -->
+			<!--alert(custRepTyp);-->
+			
+			$(".dropdown-menu li a").click(function () {
+			var custRepType = $(this).text();
+			<!-- var custRepType = $(this).parents(".repDropdown").find('.selection').text($(this).text()); -->
+			alert(custRepType);
+			});
+		} */
+		
+		
+    </script>
+  </head>
+
+  <body style="background-image: url('assets/bg.jpg')">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">P2P Physical Activity Tracker</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="landing.html"> <span class="glyphicon glyphicon-home"></span> Home</a></li>
+
+            <li><a href="reports.html"><span class="glyphicon glyphicon-dashboard"></span> My Reports</a></li>
+
+            <li> <a href="#" data-toggle="modal" data-target="#logoutmodal"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	 <div class="navbar navbar-inverse points" style="background-color:#ffffff" role="displayInfo">
+      <div class="container">
+        <div class="navbar-header">
+          
+        </div class="toppad">
+			<img src="assets/Profile_Pic.png" width="50" height="50" alt="Hello"></img>
+			<strong>John Doe</strong>
+			<strong class="pull-right">1260 Points</strong>
+		<div>
+			<center><strong>Level 5</strong></center>
+			<!-- <center><img src="Progress_Bar.jpg" width="150" height="50" alt="Progress"></img></center> -->
+			<div class="progress" width="100">
+			<div class="progress-bar" width="100" style="width: 75%"></div>
+			</div>
+		</div>
+		
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+		
+	<!--<div class="starter-template">
+		<div class="center" id="repButtons">
+			<div class="btn-group"> <i class="dropdown-arrow dropdown-arrow-inverse"></i>
+				<button class="btn btn-primary">Reports</button>
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> </button>
+				<ul class="dropdown-menu dropdown-inverse">
+				<li><a href="#somelink">Daily</a></li>
+				<li><a href="#somelink">Weekly</a></li>
+				<li><a href="#somelink">Monthly</a></li>
+				<li><a href="#somelink">Customized</a></li>
+				</ul>
+			</div>
+		</div>-->
+	
+	
+	</div>
+
+
+	<div class="headfont">
+		<!--<h2 style="padding: 30px 120px;"></h2>-->
+        <h1>Reports</h1>
+        <br/>
+
+	<div class="pull-left ">
+
+
+			<button type="button" class="btn btn-primary btn-xl" data-toggle="button" id="dlyRepButton" onClick="drBtnChanged(this);">Daily</button>
+			<script type="text/javascript">
+			$().button('toggle')
+			</script>
+			
+			<button type="button" class="btn btn-primary btn-xl" data-toggle="button" id="wklyRepButton" onClick="wkBtnChanged(this);">Weekly</button>
+			<script type="text/javascript">
+			$().button('toggle')
+			</script>
+			
+			<button type="button" class="btn btn-primary btn-xl" data-toggle="button" id="montRepButton" onClick="mtBtnChanged(this);">Monthly</button>
+			<script type="text/javascript">
+			$().button('toggle')
+			</script>
+			
+			<!--
+			<button type="button" class="btn btn-primary btn-xs" data-toggle="button" id="custRepButton" onClick="cstBtnChanged(this);">Customized</button>
+			<script type="text/javascript">
+			$().button('toggle')
+			</script>
+			-->
+	</div>
+	
+	</div>
+	<!--<div id="dDiv" class="hidden" style="padding: 5px 15px; text-align: center;">
+			<canvas id="dgraph_canvas" width="300" height="300"></canvas>
+	</div>
+	<div id="wDiv" class="hidden" style="padding: 5px 15px; text-align: center;">
+		<canvas id="wgraph_canvas" width="300" height="300"></canvas>
+	</div>
+	<div id="mDiv" class="hidden" style="padding: 5px 15px; text-align: center;">
+		<canvas id="mgraph_canvas" width="300" height="300"></canvas>
+	<div> -->
+	
+<div  id="chartdiv" class="starter-template">
+	</div>
+
+	<!--<div id="chartdiv" align="center">
+			<canvas id="graph_canvas" width="300" height="300"></canvas>
+	</div> -->
+		
+	<!--<div class="container">
+		<div class="row">
+			<div class="col-md-4 column">
+			</div>
+			<div id="chartdiv" class="col-md-4 column">
+			</div>
+			<div class="col-md-4 column">
+			</div>
+		</div>
+	</div>-->
+		<!-- <div id="chartdiv"></div>	 -->
+
+	<!--</div><!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/amcharts.js"></script>
+	<script type="text/javascript" src="js/serial.js"></script>	
+	<script type="text/javascript" src="js/pie.js"></script>
+	<script type="text/javascript" src="js/serial.js"></script>
+	<script type="text/javascript" src="js/chalk.js"></script>
+	<script>
+		/*var dd = $( "#myselect" ).val();
+		alert(dd);
+		
+		$( "#myselect option:selected" ).val(function( ) {
+				alert("ddVal");
+		});
+		
+		$("#myselect").on('change', function () {
+			alert($(this).val());
+		});*/
+		
+//		$().ready(function(){
+//			$('a').click(function(){
+//				var value = $(this).text();
+//				alert(value);
+//				if(value = 'daily'){
+//					drBtnChanged();
+//				}else if(value = 'weekly'){
+//					wkBtnChanged();
+//				}else if(value = 'monthly'){
+//					mtBtnChanged();
+//				}
+//
+//
+//			});
+//		});
+		
+		//$("#myselect").on('change', function () {
+			//alert($(this).find('option:selected').attr('id'));
+		//});
+	</script>
+	
+      
+    <!-- Modals
+    ================================================== -->
+	
+
+
+    <div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Log out</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-dismissable alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>NOTE:</strong> Logging out will discard unsaved changes
+                    </div>
+                    <p>Are you sure you want to log out?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="login.html" class="btn btn-primary" >OK</a>
+                    <a  class="btn btn-default" data-dismiss="modal" >Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+  </html>
