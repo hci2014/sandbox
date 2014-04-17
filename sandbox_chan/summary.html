@@ -86,6 +86,45 @@
 }
 
  </style>
+ 
+ <script type="text/javascript">
+	var suggestions = ["World Health Organization recommends 150 minutes of moderate physical activity for adults aged 18-64.",
+						"Zumba at the Charles River Esplanade on Saturday, April 25th, 2014 at 6:00 pm.",
+						"Sale upto 50% off on sneakers at Shoe Mart.",
+						"Try the new salad and juice bar on Huntington Ave.",
+						"Active wear on Sale upto 30% at Sports Galleria.",
+						"Participate in the Boston Marathon on Patriots Day April 21st."];
+	window.onload = function() {
+		suggestions = shuffle(suggestions);
+		$('#sug0').html(suggestions[0]);
+		$('#sug1').html(suggestions[1]);
+		$('#sug2').html(suggestions[2]);
+	}
+	
+	function shuffle(array) {
+  var currentIndex = array.length
+    , temporaryValue
+    , randomIndex
+    ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+ 
+ </script>
+ 
   </head>
 
   <body>
@@ -207,8 +246,10 @@
 						<div class="panel-body">
 							<p>
 								<ul>
-									<li>World Health Organization recommends 150 minutes of moderate physical activity for adults aged 18-64.</li><br>
-									<li>Zumba at the Charles River Esplanade on Saturday, March 29th, 2014 at 6:00 pm.</li>
+									<li>You can level up by walking for 2 minutes.</li><br>
+									<li><span id="sug0"></span></li><br>
+									<li><span id="sug1"></span></li><br>
+									<li><span id="sug2"></span></li><br>
 								</ul>
 							</p>
 						</div>
@@ -259,7 +300,7 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/aja  x/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	
 </body>
